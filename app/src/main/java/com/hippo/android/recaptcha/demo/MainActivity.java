@@ -25,7 +25,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.hippo.android.recaptcha.ReCaptchaV1;
+import com.hippo.android.recaptcha.RecaptchaV1;
 import com.squareup.picasso.Picasso;
 
 public class MainActivity extends AppCompatActivity {
@@ -52,8 +52,8 @@ public class MainActivity extends AppCompatActivity {
         url.setText(null);
         image.setImageDrawable(null);
 
-        ReCaptchaV1.reCaptcha(MainActivity.this, "6LdtfgYAAAAAALjIPPiCgPJJah8MhAUpnHcKF8u_",
-            new Handler(Looper.getMainLooper()), new ReCaptchaV1.ReCaptchaCallback() {
+        RecaptchaV1.recaptcha(MainActivity.this, "6LdtfgYAAAAAALjIPPiCgPJJah8MhAUpnHcKF8u_",
+            new Handler(Looper.getMainLooper()), new RecaptchaV1.RecaptchaCallback() {
               @Override
               public void onSuccess(@NonNull String c, @NonNull String i) {
                 challenge.setText(c);

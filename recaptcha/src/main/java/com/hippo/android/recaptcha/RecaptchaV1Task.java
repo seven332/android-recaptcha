@@ -31,7 +31,7 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-class ReCaptchaV1Task {
+class RecaptchaV1Task {
 
   private static final String HTML_BODY_1 = "<html><body><script type=\"text/javascript\" src=\"https://www.google.com/recaptcha/api/challenge?k=";
   private static final String HTML_BODY_2 = "\"></script></body></html>";
@@ -44,19 +44,19 @@ class ReCaptchaV1Task {
   private WebView webView;
 
   private Handler handler;
-  private ReCaptchaV1.ReCaptchaCallback callback;
+  private RecaptchaV1.RecaptchaCallback callback;
 
   private String image;
   private Runnable failureRunnable;
   private boolean destroyed = false;
 
   @SuppressLint({"SetJavaScriptEnabled", "AddJavascriptInterface"})
-  public ReCaptchaV1Task(Context context, String challenge, Handler handler, ReCaptchaV1.ReCaptchaCallback callback) {
+  public RecaptchaV1Task(Context context, String challenge, Handler handler, RecaptchaV1.RecaptchaCallback callback) {
     this.handler = handler;
     this.callback = callback;
 
     webView = new WebView(context.getApplicationContext());
-    webView.setWebViewClient(new ReCaptchaClient());
+    webView.setWebViewClient(new RecaptchaClient());
     webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
     webView.getSettings().setJavaScriptEnabled(true);
     webView.addJavascriptInterface(this, "Android");
@@ -118,7 +118,7 @@ class ReCaptchaV1Task {
     });
   }
 
-  private class ReCaptchaClient extends WebViewClient {
+  private class RecaptchaClient extends WebViewClient {
 
     @SuppressWarnings("deprecation")
     @Override
@@ -131,7 +131,7 @@ class ReCaptchaV1Task {
 
     @Override
     public void onPageFinished(WebView view, String url) {
-      ReCaptchaV1Task.this.onPageFinished();
+      RecaptchaV1Task.this.onPageFinished();
     }
   }
 }

@@ -24,24 +24,24 @@ import android.content.Context;
 import android.os.Handler;
 import android.support.annotation.NonNull;
 
-public class ReCaptchaV1 {
+public class RecaptchaV1 {
 
   /**
-   * Request reCaptcha.
+   * Request recaptcha.
    *
-   * @param context A context to be used for request reCaptcha.
-   * @param challenge A challenge to request reCaptcha.
+   * @param context A context to be used for request recaptcha.
+   * @param challenge A challenge to request recaptcha.
    * @param handler A handler to be processed the callback.
    * @param callback A callback that will be triggered when results are obtained.
    */
-  public static void reCaptcha(@NonNull Context context, @NonNull String challenge, @NonNull Handler handler, @NonNull ReCaptchaCallback callback) {
-    new ReCaptchaV1Task(context, challenge, handler, callback);
+  public static void recaptcha(@NonNull Context context, @NonNull String challenge, @NonNull Handler handler, @NonNull RecaptchaCallback callback) {
+    new RecaptchaV1Task(context, challenge, handler, callback);
   }
 
-  public interface ReCaptchaCallback {
+  public interface RecaptchaCallback {
 
     /**
-     * Called then a reCaptcha request completed.
+     * Called then a recaptcha request completed.
      *
      * @param challenge challenge for this image
      * @param image url for this image
@@ -49,7 +49,7 @@ public class ReCaptchaV1 {
     void onSuccess(@NonNull String challenge, @NonNull String image);
 
     /**
-     * Called when a reCaptcha request failed.
+     * Called when a recaptcha request failed.
      */
     void onFailure();
   }
